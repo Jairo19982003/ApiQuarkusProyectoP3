@@ -22,10 +22,10 @@ public class Comentario {
     @Column(name = "fecha_comentario")
     private Date fecha;
     @ManyToOne
-    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
     @ManyToOne
-    @JoinColumn(name = "id_project", insertable = false, updatable = false)
+    @JoinColumn(name = "id_project")
     private Project project;
 
 

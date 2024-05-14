@@ -2,10 +2,15 @@ package test.Repository;
 
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.core.Response;
 import model.Comentario;
+import model.Request;
+import model.Usuario;
 import test.Implementacion.IComentarioRepo;
 
 import java.util.List;
@@ -18,9 +23,11 @@ public class ComentarioRepository implements IComentarioRepo {
     EntityManager em;
 
     @Override
+    @Transactional
     public void saveComment(Comentario com) {
         persist(com);
     }
+
 
 
     public Comentario getComentario(){
@@ -31,5 +38,9 @@ public class ComentarioRepository implements IComentarioRepo {
     public List<Comentario> getComentarios() {
         return listAll();
     }
+
+//    public List<Comentario> getPaginated (Sort sort){
+//        return FindAll(sort);
+//    }
 
 }

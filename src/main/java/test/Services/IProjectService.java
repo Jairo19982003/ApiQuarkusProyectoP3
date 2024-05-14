@@ -2,8 +2,10 @@ package test.Services;
 
 import model.Project;
 
+import java.util.List;
+
 public interface IProjectService {
 //    public void save(Project pro);
-    public void getProject();
-    public void getProjects();
+    public Project getProject();
+    public List<Project> getProjects();
 }
