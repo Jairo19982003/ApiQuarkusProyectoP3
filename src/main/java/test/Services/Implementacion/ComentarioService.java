@@ -35,7 +35,7 @@ public class ComentarioService implements IComentarioService {
 
 
         public PaginatedReponse<Comentario> paginated (int page){
-            Page p = new Page(page -1, 2);
+            Page p = new Page(page -1, 10);
             var query = comentarioRepository.findAll().page(p);
             return new PaginatedReponse<>(query);
         }
