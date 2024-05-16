@@ -15,7 +15,12 @@ public class Request {
     private String comentario;
     private Date fecha;
     private Usuario usuario;
+    private String nameUser;
+    private String emailUser;
     private Project project;
+    private String nameProject;
+    private String urlRepo;
+    private String admin;
 
 //    @Data
 //    @NoArgsConstructor

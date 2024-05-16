@@ -24,6 +24,7 @@ public class ComentarioRepository implements IComentarioRepo {
 
     @Override
     @Transactional
+    //hacer que se guarde en formato txt el comentario
     public void saveComment(Comentario com) {
         persist(com);
     }
@@ -39,8 +40,5 @@ public class ComentarioRepository implements IComentarioRepo {
         return listAll();
     }
 
-//    public List<Comentario> getPaginated (Sort sort){
-//        return FindAll(sort);
-//    }
 
 }

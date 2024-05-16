@@ -58,9 +58,10 @@ public class ComentarioResource {
                 comentarior.setFecha(comentarioRequest.getFecha());
                 comentarior.setUsuario(comentarioRequest.getUsuario());
                 comentarior.setProject(comentarioRequest.getProject());
-
+            System.out.println("S1: " + comentarior);
                 comentario.save(comentarior);
-
+                comentario.saveFile(comentarioRequest);
+//falta agregar funcionalidad para que se guarde en un archivo txt
 
         return Response.ok("Comentario guardado"+ comentarior).build();
         }catch (PersistenceException e){
