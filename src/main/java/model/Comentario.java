@@ -27,7 +27,5 @@ public class Comentario {
     @ManyToOne
     @JoinColumn(name = "id_project")
     private Project project;
-
-
 }
 

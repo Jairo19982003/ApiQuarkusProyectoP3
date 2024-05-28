@@ -17,12 +17,12 @@ import jakarta.ws.rs.core.Response;
 import model.Comentario;
 import model.Request;
 import test.Services.Implementacion.ComentarioService;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
 import java.util.Properties;
+
 
 @Path("/Comentario")
 public class ComentarioResource {

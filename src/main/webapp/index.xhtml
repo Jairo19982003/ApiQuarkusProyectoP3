@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>PORTAFOLIO</title>
+
+    <style type="text/css">
+        /* styles.css */
+
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #333;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .top-nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .top-nav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .top-nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .big-title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+
+        .big-title .highlight {
+            color: #4CAF50;
+        }
+
+        .separator {
+            height: 2px;
+            background-color: #4CAF50;
+            margin: 20px 0;
+        }
+
+        .team-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .team-member {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-member h2 {
+            margin-top: 10px;
+            font-size: 1.5em;
+        }
+
+        .text-section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .section-title .highlight {
+            color: #4CAF50;
+        }
+
+        .section-text {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Card Styles */
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .card {
+            border: 1px solid #fff;
+            padding: 20px;
+            width: 300px;
+            background-color: #1e1e1e;
+            margin: 10px;
+            color: white;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-body {
+            display: flex;
+        }
+
+        .card-body .image {
+            width: 50%;
+            margin-right: 10px;
+            background-color: #333;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+        }
+
+        .card-body .image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .card-body .description {
+            width: 50%;
+        }
+
+        /* Comment Section Styles */
+        .comment-section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .comment-section h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .comment-section label {
+            display: block;
+            margin-bottom: 5px;
+            color: #4CAF50;
+        }
+
+        .comment-section input,
+        .comment-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+        }
+
+        .comment-section textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .comment-section .send-button {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .comment-section .send-button button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .comment-section .send-button button:hover {
+            background-color: #45a049;
+        }
+
+        .menubar {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .menubar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .menubar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h1 class="big-title">Portafolio <span class="highlight">Webstart</span></h1>
+    <div class="separator"></div>
+
+    <!-- Container for cards to be displayed horizontally -->
+    <div class="card-container">
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 1</strong></p>
+                    <p>name-admin: <strong>Admin 1</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 1</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 2</strong></p>
+                    <p>name-admin: <strong>Admin 2</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 2</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 3</strong></p>
+                    <p>name-admin: <strong>Admin 3</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 3</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Cards Added -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 4</strong></p>
+                    <p>name-admin: <strong>Admin 4</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 4</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 5</strong></p>
+                    <p>name-admin: <strong>Admin 5</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 5</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 6</strong></p>
+                    <p>name-admin: <strong>Admin 6</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 6</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 7</strong></p>
+                    <p>name-admin: <strong>Admin 7</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 7</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 8</strong></p>
+                    <p>name-admin: <strong>Admin 8</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 8</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 9</strong></p>
+                    <p>name-admin: <strong>Admin 9</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 9</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <p>name-project: <strong>Proyecto 10</strong></p>
+                    <p>name-admin: <strong>Admin 10</strong></p>
+                </div>
+                <div>
+                    <p><strong>Fecha 10</strong></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="description">
+                    <p>Descripción línea 1</p>
+                    <p>Descripción línea 2</p>
+                    <p>Descripción línea 3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- Comment Section -->
+    <div class="comment-section">
+        <h2>Dejar un Comentario</h2>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name"/>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"/>
+
+        <label for="project">Proyecto que desea comentar:</label>
+        <input type="text" id="project" name="project"/>
+
+        <label for="comment">Comentario:</label>
+        <textarea id="comment" name="comment" cols="" rows=""></textarea>
+
+        <div class="send-button">
+            <button type="submit">
+                <span>&#10148;</span> <!-- Unicode character for the arrow -->
+            </button>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- Pagination Menubar -->
+    <div class="menubar">
+        <a href="#">Comentarios recientes</a>
+    </div>
+
+    <div class="separator"></div>
+    <h3 class="big-title">ACERCA DE ESTE <span class="highlight">PORTAFOLIO</span></h3>
+
+    <div class="text-section">
+        <h2 class="section-title">Nuestro Equipo <span class="highlight"></span></h2>
+        <p class="section-text">
+            Somos un grupo de programadores principiantes apasionados por la tecnologia
+            queremos compartir con ustedes nuestros conocimientos y proyectos realizados
+            con la finalidad de que puedan observar nuestros avances y puedan tomarlo como
+            ejemplo para sus futuros proyectos, siempre con la finalidad de mejorar.
+        </p>
+    </div>
+
+    <div class="text-section">
+        <h2 class="section-title">Apartado de <span class="highlight">Comentarios</span></h2>
+        <p class="section-text">
+            En este portafolio usted podra dejar un comentario acerca de un proyecto determinado
+            a fin de verificar nuestros conocimientos adquiridos y poder dejarnos su opinion, lo que
+            mas apreciamos es su opinion para poder mejorar.
+        </p>
+    </div>
+
+    <div class="text-section">
+        <h2 class="section-title">Apartado de <span class="highlight">Proyectos</span></h2>
+        <p class="section-text">
+            En este apartado podra observar los proyectos realizados por nuestro equipo,
+            cada uno de ellos con una descripcion detallada de lo que se realizo a fin de
+            que pueda observar el trabajo realizado por nuestro equipo.
+        </p>
+    </div>
+
+</h:body>
+
+</html>
